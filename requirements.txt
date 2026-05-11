@@ -3,3 +3,10 @@ tensorflow>=2.10
 mlflow>=2.0
 scikit-learn>=1.2
 matplotlib>=3.7
+
+fastapi
+uvicorn
+python-multipart
+pillow
+numpy
+tensorflow-cpu==2.16.1
