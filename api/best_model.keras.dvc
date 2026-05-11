@@ -1,0 +1,5 @@
+outs:
+- md5: 583d7fd1bb23211ef61fafd9a00ae243
+  size: 33716892
+  hash: md5
+  path: best_model.keras
