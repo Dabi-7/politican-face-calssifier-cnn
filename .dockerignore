@@ -1,0 +1,14 @@
+.git/
+.dvc/
+.gitignore
+
+dataset/
+final_weights/
+notebooks/
+
+__pycache__/
+*.pyc
+*.pyo
+venv/
+env/
+.env
