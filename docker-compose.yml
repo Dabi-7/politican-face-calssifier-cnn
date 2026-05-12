@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  
+  api:
+    image: carbon390/politican-eff-net0-api:latest
+    container_name: politician-api
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+
+  
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: politician-frontend
+    ports:
+      - "8501:8501"
+    depends_on:
+      - api
+    environment:
+      
+      
+      - API_URL=http://api:8000/predict
+    restart: unless-stopped
