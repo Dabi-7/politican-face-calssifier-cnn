@@ -3,7 +3,7 @@ version: '3.8'
 services:
   
   api:
-    image: carbon390/politican-eff-net0-api:latest
+    image: carbon390/politician-api:latest
     container_name: politician-api
     ports:
       - "8000:8000"
@@ -12,9 +12,7 @@ services:
       - X390-net
   
   frontend:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
+    image: carbon390/politician-frontend:latest
     container_name: politician-frontend
     ports:
       - "8501:8501"

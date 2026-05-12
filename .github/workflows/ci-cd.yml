@@ -20,7 +20,7 @@ jobs:
           
           gdown --folder 1RgEA-LSpl0KE0d6sduREmZ1QrfWCjXXt -O model_folder
           
-          mv model_folder/*.keras best_model.keras
+          mv model_folder/*.keras api/best_model.keras
 
           rm -rf model_folder
 
