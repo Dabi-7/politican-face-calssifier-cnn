@@ -1,12 +1,15 @@
-
-#tensorflow>=2.10
-mlflow>=2.0
-scikit-learn>=1.2
-matplotlib>=3.7
-
-fastapi
-uvicorn
-python-multipart
-pillow
-numpy
+# Core Machine Learning & Tracking
 tensorflow-cpu==2.16.1
+mlflow==2.12.1
+scikit-learn==1.4.2
+matplotlib==3.8.4
+numpy==1.26.4
+
+# API & Deployment
+fastapi==0.111.0
+uvicorn==0.29.0
+python-multipart==0.0.9
+Pillow==10.3.0
+
+# Data Versioning (DVC)
+dvc==3.50.1
