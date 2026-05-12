@@ -8,7 +8,8 @@ services:
     ports:
       - "8000:8000"
     restart: unless-stopped
-
+    networks:
+      - X390-net
   
   frontend:
     build:
@@ -19,8 +20,14 @@ services:
       - "8501:8501"
     depends_on:
       - api
+    networks:
+      - X390-net
     environment:
       
       
       - API_URL=http://api:8000/predict
     restart: unless-stopped
+
+networks:
+  X390-net:
+    driver: bridge
