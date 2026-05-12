@@ -1,21 +1,26 @@
-FROM python:3.10-slim
+# Use a lightweight Python 3.11 image
+FROM python:3.11-slim
 
+# Set the working directory
 WORKDIR /app
 
-RUN useradd -m rouge2
+# Install system dependencies for OpenCV and Image processing
+RUN apt-get update && apt-get install -y \
+    libgl1-mesa-glx \
+    libglib2.0-0 \
+    && rm -rf /var/lib/apt/lists/*
 
+# Copy requirements first to leverage Docker cache
 COPY requirements.txt .
 
+# Install dependencies (using the updated requirements we made earlier)
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY api/ /app/api/
+# Copy the model, labels, and FastAPI code
+COPY . .
 
-RUN chown -R rouge2:rouge2 /app
-
-USER rouge2
-
+# Expose the port FastAPI uses
 EXPOSE 8000
 
-WORKDIR /app/api
-
+# Run the application
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]

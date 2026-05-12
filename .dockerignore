@@ -12,3 +12,9 @@ __pycache__/
 venv/
 env/
 .env
+dataset/
+.dvc/cache
+.git
+.env
+__pycache__
+*.ipynb
