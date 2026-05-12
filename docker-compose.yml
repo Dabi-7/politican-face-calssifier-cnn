@@ -1,12 +1,18 @@
-version: '3.8'
-
 services:
-  
-  api:
+  api-b0:
     image: carbon390/politician-api:latest
-    container_name: politician-api
+    container_name: politician-api-b0
     ports:
       - "8000:8000"
+    restart: unless-stopped
+    networks:
+      - X390-net
+
+  api-b4:
+    image: f230706/politician-classifier:v1
+    container_name: politician-api-b4
+    ports:
+      - "8001:8000"
     restart: unless-stopped
     networks:
       - X390-net
@@ -17,13 +23,13 @@ services:
     ports:
       - "8501:8501"
     depends_on:
-      - api
+      - api-b0
+      - api-b4
     networks:
       - X390-net
     environment:
-      
-      
-      - API_URL=http://api:8000/predict
+      - API_URL_B0=http://api-b0:8000/predict
+      - API_URL_B4=http://api-b4:8000/predict
     restart: unless-stopped
 
 networks:
